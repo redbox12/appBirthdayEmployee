@@ -19,6 +19,7 @@ func (api *api) Handle() {
 	api.r.HandleFunc("/api/user/new", api.createUser).Methods(http.MethodPost)
 	api.r.HandleFunc("/api/user/login", api.authenticate).Methods(http.MethodPost)
 	api.r.HandleFunc("/api/users", api.getUsers).Methods(http.MethodGet)
+	api.r.HandleFunc("/api/user/subscribe", api.subscribeToUser).Methods(http.MethodPost)
 
 	api.r.Use(api.middleware)
 	api.r.Use(api.jwtAuthentication)
