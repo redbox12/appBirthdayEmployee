@@ -20,6 +20,7 @@ func (api *api) Handle() {
 	api.r.HandleFunc("/api/user/login", api.authenticate).Methods(http.MethodPost)
 	api.r.HandleFunc("/api/users", api.getUsers).Methods(http.MethodGet)
 
+	api.r.Use(api.middleware)
 	api.r.Use(api.jwtAuthentication)
 }
 
